@@ -1,0 +1,39 @@
+00 Amaira Floral Wrap Dress
+01 Rhea Polka Midi Dress
+02 Elara Off-Shoulder Gown
+03 Noor Tulle Evening Gown
+04 Sienna Tiered Cotton Dress
+05 Anaya Ruffle Maxi Dress
+06 Kanira Banarasi Silk Saree
+07 Meher Festive Co-ord Set
+08 Marlow Checked Wool Overcoat
+09 Aurelie Longline Trench
+10 Sahara Utility Field Jacket
+11 Lumen Pleated Trousers
+12 Ivory Pleated Sleeveless Blouse
+13 Nia Relaxed Graphic Tee
+14 Solstice Lounge Set
+15 Wren Linen Playsuit
+16 Cove Ribbed Knit Sweater
+17 Rowan Tan Leather Biker Jacket
+18 Dune Rust Bomber Jacket
+19 Kade Denim Trucker Jacket
+20 Atlas Printed Chambray Shirt
+21 Halden Oxford Cotton Shirt
+22 Sterling Formal Slim Shirt
+23 Milan Linen Blend Shirt
+24 Regent Checked Wool Blazer
+25 Essential Crew Neck Tee
+26 Onyx Oversized Tee
+27 Trail Graphic Print Tee
+28 Ridge Olive Slim Tee
+29 Nomad Slim Fit Denim
+30 Coast Light Wash Jeans
+31 Base Cotton Sweatshirt
+32 Drift Mint Hoodie
+33 Mira Printed Tote Bag
+34 Vela Structured Satchel
+35 Metro Everyday Backpack
+36 Bloom Stiletto Heels
+37 Court Leather Sneakers
+38 Wilder Leather Belt

@@ -1,0 +1,17 @@
+import puppeteer from 'puppeteer-core';
+const browser = await puppeteer.launch({ executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', headless: true, args: ['--no-sandbox'] });
+const page = await browser.newPage();
+await page.setViewport({ width: 1440, height: 960 });
+await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle2' });
+await page.locator('button[aria-label="Search"]').click();
+await page.locator('input[aria-label="Search products"]').fill('Amaira');
+await page.waitForFunction(() => document.body.innerText.includes('Amaira Floral Wrap Dress'));
+console.log('URL before:', page.url());
+console.log('links:', await page.$$eval('[role="dialog"] a', (links) => links.map((link) => ({ text: link.textContent?.trim(), href: link.getAttribute('href') }))));
+console.log('h1 before:', await page.$eval('h1', node => node.textContent));
+await page.locator('[role="dialog"] a[href="/product/amaira-floral-wrap-dress"]').click();
+await new Promise(resolve => setTimeout(resolve, 1000));
+console.log('URL after:', page.url());
+console.log('h1 after:', await page.$eval('h1', node => node.textContent));
+console.log('body head:', (await page.$eval('body', node => node.innerText)).slice(0, 900));
+await browser.close();

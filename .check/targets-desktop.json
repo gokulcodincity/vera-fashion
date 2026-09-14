@@ -1,0 +1,12 @@
+[
+  { "name": "d1-hero", "path": "/", "width": 1400, "height": 820 },
+  { "name": "d2-category", "path": "/", "width": 1400, "height": 820, "scroll": 1200, "scrollTo": 1000 },
+  { "name": "d3-new", "path": "/", "width": 1400, "height": 820, "scroll": 2200, "scrollTo": 1950 },
+  { "name": "d4-promo", "path": "/", "width": 1400, "height": 820, "scroll": 3200, "scrollTo": 3000 },
+  { "name": "d5-featured", "path": "/", "width": 1400, "height": 820, "scroll": 4100, "scrollTo": 3900 },
+  { "name": "d6-best", "path": "/", "width": 1400, "height": 820, "scroll": 5100, "scrollTo": 4900 },
+  { "name": "d7-values", "path": "/", "width": 1400, "height": 820, "scroll": 6100, "scrollTo": 5900 },
+  { "name": "d8-reviews", "path": "/", "width": 1400, "height": 820, "scroll": 7100, "scrollTo": 6900 },
+  { "name": "d9-social", "path": "/", "width": 1400, "height": 820, "scroll": 8100, "scrollTo": 7900 },
+  { "name": "d10-footer", "path": "/", "width": 1400, "height": 820, "scroll": 9600, "scrollTo": 9400 }
+]

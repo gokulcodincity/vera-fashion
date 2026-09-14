@@ -1,0 +1,16 @@
+import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Plus, Search, Trash2 } from 'lucide-react';
+import Button from '../../components/Button';
+import { adminProducts, removeProduct } from '../../services/admin';
+import { userMessage } from '../../services/errors';
+import { formatPrice } from '../../utils/format';
+
+export default function AdminProducts() {
+  const [items, setItems] = useState([]); const [query, setQuery] = useState(''); const [error, setError] = useState(''); const [loading, setLoading] = useState(true);
+  const load = () => { setLoading(true); adminProducts().then(setItems).catch((err) => setError(userMessage(err))).finally(() => setLoading(false)); };
+  useEffect(() => { load(); }, []);
+  const filtered = useMemo(() => items.filter((item) => `${item.name} ${item.category}`.toLowerCase().includes(query.toLowerCase())), [items, query]);
+  const archive = async (item) => { if (!window.confirm(`Delete ${item.name}? Its images and variants will be removed.`)) return; try { await removeProduct(item.databaseId); load(); } catch (err) { setError(userMessage(err)); } };
+  return <div><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow">Catalogue</p><h1 className="mt-2 text-4xl">Products</h1></div><Button to="/admin/products/new"><Plus size={15} />Add product</Button></div><div className="mt-7 border border-line bg-cream p-4"><label className="flex items-center gap-3 border border-line bg-white px-3"><Search size={16} className="text-muted" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search products" className="w-full bg-transparent py-3 text-sm outline-none" /></label></div>{error && <p role="alert" className="mt-4 text-sm text-clay">{error}</p>}<div className="mt-5 overflow-x-auto border border-line bg-cream"><table className="w-full min-w-[48rem] text-left text-sm"><thead className="border-b border-line text-[10px] uppercase tracking-[0.16em] text-muted"><tr><th className="p-4">Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th className="p-4">Actions</th></tr></thead><tbody>{loading ? <tr><td colSpan="6" className="p-8 text-center text-slate">Loading products…</td></tr> : filtered.map((item) => <tr key={item.databaseId} className="border-b border-line last:border-0"><td className="p-4"><div className="flex items-center gap-3"><img src={item.images[0]} alt="" className="h-12 w-10 bg-sand object-cover" /><span>{item.name}</span></div></td><td>{item.category}</td><td>{formatPrice(item.price)}</td><td>{item.variants.reduce((sum, variant) => sum + variant.stock_quantity, 0)}</td><td>{item.is_active ? 'Active' : 'Archived'}</td><td className="p-4"><div className="flex gap-3"><Link to={`/admin/products/${item.databaseId}/edit`} className="text-xs uppercase tracking-[0.14em] text-ink hover:text-clay">Edit</Link><button type="button" onClick={() => archive(item)} aria-label={`Delete ${item.name}`} className="text-clay"><Trash2 size={15} /></button></div></td></tr>)}{!loading && !filtered.length && <tr><td colSpan="6" className="p-8 text-center text-slate">No products found.</td></tr>}</tbody></table></div></div>;
+}
